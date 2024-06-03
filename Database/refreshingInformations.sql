@@ -86,3 +86,35 @@ CREATE TABLE [Aluno](
     CONSTRAINT [UK_Aluno_Email] UNIQUE([Email])
 )
 GO
+
+DROP TABLE [Curso]
+
+CREATE TABLE [Curso](
+    [Id] INT NOT NULL,
+    [Nome] NVARCHAR(80) NOT NULL,
+    [IdCategoria] INT NOT NULL,
+
+    CONSTRAINT [PK_Curso] PRIMARY KEY([Id]),
+    CONSTRAINT [FK_Curso_Categoria] FOREIGN KEY([IdCategoria]) REFERENCES [Categoria]([Id])
+)
+GO
+
+CREATE TABLE [ProgressoAlunoCurso](
+    [IdAluno] INT NOT NULL,
+    [IdCurso] INT NOT NULL,
+    [Progresso] INT NOT NULL,
+    [UltimaAtualização] DATETIME NOT NULL DEFAULT(GETDATE()),
+
+    CONSTRAINT PK_ProgressoCurso PRIMARY KEY([IdAluno],[IdCurso]) 
+)
+GO
+
+DROP TABLE [ProgressoAlunoCurso]
+
+CREATE TABLE [Categoria](
+    [Id] INT NOT NULL,
+    [Nome] NVARCHAR(80) NOT NULL,
+
+    CONSTRAINT [PK_Categoria] PRIMARY KEY([Id])
+)
+GO
