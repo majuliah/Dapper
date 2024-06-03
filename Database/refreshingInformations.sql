@@ -86,11 +86,13 @@ CREATE TABLE [Aluno](
     CONSTRAINT [UK_Aluno_Email] UNIQUE([Email])
 )
 GO
+CREATE INDEX [IX_Aluno_Email] ON [Aluno]([Email])
+DROP INDEX [IX_Aluno_Email] ON [Aluno]
 
 DROP TABLE [Curso]
 
 CREATE TABLE [Curso](
-    [Id] INT NOT NULL,
+    [Id] INT NOT NULL IDENTITY(1,1),
     [Nome] NVARCHAR(80) NOT NULL,
     [IdCategoria] INT NOT NULL,
 
@@ -99,7 +101,7 @@ CREATE TABLE [Curso](
 )
 GO
 
-CREATE TABLE [ProgressoAlunoCurso](
+CREATE TABLE [ProgressoAlunoCurso]( 
     [IdAluno] INT NOT NULL,
     [IdCurso] INT NOT NULL,
     [Progresso] INT NOT NULL,
@@ -118,3 +120,4 @@ CREATE TABLE [Categoria](
     CONSTRAINT [PK_Categoria] PRIMARY KEY([Id])
 )
 GO
+
