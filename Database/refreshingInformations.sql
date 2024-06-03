@@ -11,3 +11,16 @@ CREATE TABLE [Aluno](
     [Active] BIT 
 )
 GO
+
+ALTER TABLE [Aluno]
+    ADD [Document] NVARCHAR(11)
+GO
+
+ALTER TABLE [Aluno]
+    ALTER COLUMN [Document] CHAR(11)
+GO
+
+ALTER TABLE [Aluno]
+    DROP COLUMN [Document] 
+GO
+
